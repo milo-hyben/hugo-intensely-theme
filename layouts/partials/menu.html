@@ -1,45 +1,103 @@
-  <!-- BEGIN MENU -->
+{{ "<!-- Menu section -->" | safeHTML }}
+{{ $baseUrl := .Site.BaseURL }}
+{{ $isHomePage := eq .Title .Site.Title }}
+{{ $currentPage := . }}
   <section id="menu-area">      
     <nav class="navbar navbar-default" role="navigation">  
       <div class="container">
         <div class="navbar-header">
-          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          {{ "<!-- FOR MOBILE VIEW COLLAPSED BUTTON -->" | safeHTML }}
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- LOGO -->              
-          <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html">Intensely</a>              
-          <!-- IMG BASED LOGO  -->
-<!--            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo"></a> -->
+          {{ if .Site.Params.navigation.logo }}
+            <a class="navbar-brand" href="{{ if .IsHome }}/#page-top{{ else }}{{ .Site.BaseURL }}{{ end }}">
+              {{ $url := printf "images/%s" .Site.Params.navigation.logo }}
+              <img src="{{ $url | absURL }}" alt="{{ .Site.Params.navigation.brand }}">
+            </a>
+          {{ else }}
+            <a class="navbar-brand" href="{{ if .IsHome }}/#page-top{{ else }}{{ .Site.BaseURL }}{{ end }}">{{ .Site.Params.navigation.brand }}</a>  
+          {{ end }}
         </div>
+
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="feature.html">Feature</a></li>
-            <li><a href="service.html">Service</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="fa fa-angle-down"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="blog-archive.html">Blog Archive</a></li>                
-                <li><a href="blog-single-with-left-sidebar.html">Blog Single with Left Sidebar</a></li>
-                <li><a href="blog-single-with-right-sidebar.html">Blog Single with Right Sidebar</a></li>
-                <li><a href="blog-single-with-out-sidebar.html">Blog Single with out Sidebar</a></li>           
-              </ul>
+
+            {{ range .Site.Menus.prepend }}
+            <li>
+              <a href="{{ .URL }}">{{ .Name | markdownify }}</a>
             </li>
-            <li><a href="404.html">404 Page</a></li>               
-            <li><a href="contact.html">Contact</a></li>
+            {{ end }}
+
+            {{ if .Site.Params.feature.enable }}
+              <li>
+                <a href="{{ .Site.BaseURL }}#feature">{{ with .Site.Params.navigation.feature }}{{ . }}{{ end }}</a>
+              </li>
+            {{ end }}
+
+            {{ if .Site.Params.about.enable }}
+              <li>
+                <a href="{{ .Site.BaseURL }}#about">{{ with .Site.Params.navigation.about }}{{ . }}{{ end }}</a>
+              </li>
+            {{ end }}
+
+            {{ if .Site.Params.services.enable }}
+              <li>
+                <a href="{{ .Site.BaseURL }}#service">{{ with .Site.Params.navigation.services }}{{ . }}{{ end }}</a>
+              </li>
+            {{ end }}
+
+            {{ if .Site.Params.team.enable }}
+              <li>
+                <a href="{{ .Site.BaseURL }}#our-team">{{ with .Site.Params.navigation.team }}{{ . }}{{ end }}</a>
+              </li>
+            {{ end }}
+
+            {{ if .Site.Params.pricing.enable }}
+              <li>
+                <a href="{{ .Site.BaseURL }}#pricing-table">{{ with .Site.Params.navigation.pricing }}{{ . }}{{ end }}</a>
+              </li>
+            {{ end }}
+
+            {{ if .Site.Params.news.enable }}
+              <li>
+                <a href="{{ .Site.BaseURL }}#latest-news">{{ with .Site.Params.navigation.news }}{{ . }}{{ end }}</a>
+              </li>
+            {{ end }}
+
+            {{ if .Site.Params.news.enable }}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ with .Site.Params.navigation.blog }}{{ . }}{{ end }} <span class="fa fa-angle-down"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="blog-archive.html">Blog Archive</a></li>                
+                  <li><a href="blog-single-with-left-sidebar.html">Blog Single with Left Sidebar</a></li>
+                  <li><a href="blog-single-with-right-sidebar.html">Blog Single with Right Sidebar</a></li>
+                  <li><a href="blog-single-with-out-sidebar.html">Blog Single with out Sidebar</a></li>           
+                </ul>
+                </li>
+            {{ end }}
+
+            {{ range .Site.Menus.postpend }}
+              <li>
+                <a href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+
+            
+            
+
           </ul>                     
-        </div><!--/.nav-collapse -->
+        </div>
+        
+        {{ if .Site.Params.topnav.search }}
         <a href="#" id="search-icon">
           <i class="fa fa-search">            
           </i>
         </a>
+        {{ end }}
       </div>     
     </nav>
   </section>
-  <!-- END MENU --> 

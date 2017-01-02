@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-
   {{ partial "header.html" . }}
-
   <body>
     <!-- BEGAIN PRELOADER -->
-  <div id="preloader">
-    <div id="status">&nbsp;</div>
-  </div>
-  <!-- END PRELOADER -->
+    <div id="preloader">
+      <div id="status">&nbsp;</div>
+    </div>
+    <!-- END PRELOADER -->
 
-  <!-- SCROLL TOP BUTTON -->
-  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
-  <!-- END SCROLL TOP BUTTON -->
-
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
 
     {{ if .Site.Params.topnav.enable }}
       {{ partial "topnav.html" . }}

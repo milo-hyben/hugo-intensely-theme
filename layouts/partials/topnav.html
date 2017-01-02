@@ -1,18 +1,20 @@
-  <!-- Start header -->
+{{ "<!-- Top Nav Header section -->" | safeHTML }}
   <header id="header">
-    <!-- header top search -->
-    <div class="header-top">
-      <div class="container">
-        <form action="">
-          <div id="search">
-          <input type="text" placeholder="Type your search keyword here and hit Enter..." name="s" id="m_search" style="display: inline-block;">
-          <button type="submit">
-            <i class="fa fa-search"></i>
-          </button>
+    {{ if .Site.Params.topnav.search }}
+      <!-- header top search -->
+      <div class="header-top">
+        <div class="container">
+          <form action="">
+            <div id="search">
+            <input type="text" placeholder="Type your search keyword here and hit Enter..." name="s" id="m_search" style="display: inline-block;">
+            <button type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          </form>
         </div>
-        </form>
       </div>
-    </div>
+    {{ end }}
     <!-- header bottom -->
     <div class="header-bottom">
       <div class="container">
@@ -20,32 +22,39 @@
           <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="header-contact">
               <ul>
-                <li>
-                  <div class="phone">
-                    <i class="fa fa-phone"></i>
-                    +1(800) 699-7071
-                  </div>
-                </li>
-                <li>
-                  <div class="mail">
-                    <i class="fa fa-envelope"></i>
-                    iam@domain.com
-                  </div>
-                </li>
+                {{ if .Site.Params.topnav.phone }}
+                  <li>
+                    <div class="phone">
+                      <i class="fa fa-phone"></i>
+                      {{ with .Site.Params.topnav.phone }}{{ . | markdownify }}{{ end }}
+                    </div>
+                  </li>
+                {{ end }}
+                {{ if .Site.Params.topnav.email }}
+                  <li>
+                    <div class="mail">
+                      <i class="fa fa-envelope"></i>
+                      {{ with .Site.Params.topnav.email }}{{ . | markdownify }}{{ end }}
+                    </div>
+                  </li>
+                {{ end }}
               </ul>
             </div>
           </div>
+          {{ if .Site.Params.topnav.login }}
           <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="header-login">
               <a class="login modal-form" data-target="#login-form" data-toggle="modal" href="#">Login / Sign Up</a>
             </div>
           </div>
+          {{ end }}
         </div>
       </div>
     </div>
   </header>
   <!-- End header -->
   
+  {{ if .Site.Params.topnav.login }}
   <!-- Start login modal window -->
   <div aria-hidden="false" role="dialog" tabindex="-1" id="login-form" class="modal leread-modal fade in">
     <div class="modal-dialog">
@@ -106,4 +115,5 @@
       </div>
     </div>
   </div>
+  {{ end }}
   <!-- End login modal window -->
