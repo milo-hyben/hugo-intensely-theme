@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+{{ partial "header.html" . }}
+<body>
+    <!-- BEGAIN PRELOADER -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- END PRELOADER -->
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    {{ if .Site.Params.topnav.enable }} 
+      {{ partial "topnav.html" . }} 
+    {{ end }} 
 
-  {{ partial "header.html" . }}
-
-  <body id="page-top" class="index">
-    {{ partial "menu.html" . }}
-
+    {{ partial "menu.html" . }} 
+    
     {{ "<!-- 404 -->" | safeHTML }}
-    <header>
-      <div class="container">
-        <div class="404">
-          <div class="intro-text">
-            <div class="intro-heading">Page not found</div>
-
-            {{ with .Site.Params.error404 }}
-            <div class="intro-lead-in">{{ .heading | markdownify }}</div>
-
-            <div class="intro-lead-in">{{ .text | markdownify }}</div>
-            {{ else }}
-            <div class="intro-lead-in">Requested page could not be found.</div>
-            <div class="intro-lead-in">You can always go back to our main <a href="{{ .Site.BaseURL }}">page</a>.</div>
-            {{ end }}
-
-          </div>
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>404 Error - Not Found</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+                                <li class="active">404 - Not Found</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
-
+    </section>
+    <!-- End single page header -->
+    <!-- Start error section  -->
+    <section id="error">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="errror-page-area">
+                        <h1 class="error-title"><span class="fa fa-bug"></span></h1>
+                        <div class="error-content">
+                            <span>Opps!</span>
+                            <p>We're sorry, but the page you were looking for doesn't exist.</p>
+                            <a class="error-home" href="{{ .Site.BaseURL }}">Home Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End error section  -->
     {{ if .Site.Params.footer.enable }}
       {{ partial "footer.html" . }}
     {{ end }}
 
     {{ partial "js.html" . }}
-  </body>
+</body>
 </html>
