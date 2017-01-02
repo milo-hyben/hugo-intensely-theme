@@ -1,0 +1,30 @@
+{{ "<!-- Counter -->" | safeHTML }}
+<section id="counter">
+    <div class="counter-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="counter-area">
+                        <div class="row">
+                            {{ range .Site.Params.counter.cells }}
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-counter">
+                                    <div class="counter-icon">
+                                        <i class="fa {{ .icon }}"></i>
+                                    </div>
+                                    <div class="counter-no counter">
+                                        {{ .number | markdownify }}
+                                    </div>
+                                    <div class="counter-label">
+                                        {{ .title | markdownify }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

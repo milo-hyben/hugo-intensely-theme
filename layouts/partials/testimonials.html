@@ -1,0 +1,38 @@
+{{ "<!-- Testimonial section -->" | safeHTML }}
+<section id="testimonial">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-area">
+              <h2 class="title">{{ with .Site.Params.testimonials_list.title }}{{ . | markdownify }}{{ end }}</h2>
+              <span class="line"></span>           
+            </div>
+          </div>
+          <div class="col-md-12">
+            
+            <!-- Start testimonial slider -->
+            <div class="testimonial-slider">
+
+             {{ range .Site.Params.testimonials }}
+              <div class="single-slider">
+                <div class="testimonial-img">
+                  {{ $url := printf "images/clients/%s" .img }}
+                  <img src="{{ $url | absURL }}" alt="testimonial image">
+                </div>
+              <div class="testimonial-content">
+                  <p>{{ .content | markdownify }}</p>
+                  <h6>{{ .name | markdownify }}, <span>{{ .role | markdownify }}</span></h6>
+                </div>
+              </div>
+            {{ end }}
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6"></div>        
+    </div>
+  </div>
+</section>

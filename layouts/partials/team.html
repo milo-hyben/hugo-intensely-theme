@@ -1,0 +1,41 @@
+{{ "<!-- Team section -->" | safeHTML }}
+<section id="our-team">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-area">
+                    <h2 class="title">{{ with .Site.Params.team.title }}{{ . | markdownify }}{{ end }}</h2>
+                    <span class="line"></span>
+                    <p>{{ with .Site.Params.team.subtitle }}{{ . | markdownify }}{{ end }}</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="our-team-content">
+                    <div class="row">
+                        {{ range .Site.Params.team.members }}
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="single-team-member">
+                                <div class="team-member-img">
+                                    {{ $url := printf "images/team/%s" .img }}
+                                    <img src="{{ $url | absURL }}" alt="{{ .name }}">
+                                </div>
+                                <div class="team-member-name">
+                                    <p>{{ .name | markdownify }}</p>
+                                    <span>{{ .position | markdownify }}</span>
+                                </div>
+                                {{ with .bio }}
+                                <p>{{ . | markdownify }}</p>
+                                {{ end }}
+                                <div class="team-member-link">
+                                    {{ range .social }}
+                                    <a href="{{ index . 1 }}"><i class="fa {{ index . 0 }}"></i></a> {{ end }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+{{ "<!-- jQuery -->" | safeHTML }}
+<script src="{{ "js/jquery.min.js"| absURL }}"></script>
+
+{{ "<!-- Bootstrap Core -->" | safeHTML }}
+<script src="{{ "js/bootstrap.js"| absURL }}"></script>
+
+{{ "<!-- Slick Slider -->" | safeHTML }}
+<script src="{{ "js/slick.js"| absURL }}"></script>
+
+{{ "<!-- counter-->" | safeHTML }}
+<script src="{{ "js/waypoints.js"| absURL }}"></script>
+
+{{ "<!-- jquery.counterup -->" | safeHTML }}
+<script src="{{ "js/jquery.counterup.js"| absURL }}"></script>
+
+{{ "<!-- Wow animation -->" | safeHTML }}
+<script src="{{ "js/wow.js"| absURL }}"></script>
+
+{{ "<!-- progress bar -->" | safeHTML }}
+<script src="{{ "js/bootstrap-progressbar.js"| absURL }}"></script>
+
+{{ "<!-- Custom Theme -->" | safeHTML }}
+<script src="{{ "js/custom.js"| absURL }}"></script>
+
+{{ template "_internal/google_analytics_async.html" . }}
+
+{{ range .Site.Params.custom_js }}
+  <script src="{{ . | absURL }}"></script>
+{{ end }}

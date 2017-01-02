@@ -1,0 +1,23 @@
+{{ "<!-- Clients Brands -->" | safeHTML }}
+  <section id="clients-brand">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="clients-brand-area">
+            <ul class="clients-brand-slide">
+              
+            {{ range .Site.Params.clients }}
+              <li class="col-md-3">
+                <div class="single-brand">
+                  {{ $url := printf "images/clients/%s" .logo }}
+                  <img src="{{ $url | absURL }}" alt="img">
+                </div>
+              </li>
+            {{ end }}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

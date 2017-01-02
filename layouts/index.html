@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+  {{ partial "header.html" . }}
+
+  <body>
+    <!-- BEGAIN PRELOADER -->
+  <div id="preloader">
+    <div id="status">&nbsp;</div>
+  </div>
+  <!-- END PRELOADER -->
+
+  <!-- SCROLL TOP BUTTON -->
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+    {{ if .Site.Params.topnav.enable }}
+      {{ partial "topnav.html" . }}
+    {{ end }}
+
+    {{ partial "menu.html" . }}
+
+    {{ if .Site.Params.slider.enable }}
+      {{ partial "slider.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.features.enable }}
+      {{ partial "features.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.about.enable }}
+      {{ partial "about.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.counter.enable }}
+      {{ partial "counter.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.services.enable }}
+      {{ partial "services.html" . }}
+    {{ end }}
+  
+    {{ if .Site.Params.team.enable }}
+      {{ partial "team.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.pricing.enable }}
+      {{ partial "pricing.html" . }}
+    {{ end }}
+  
+    {{ if .Site.Params.testimonials_list.enable }}
+      {{ partial "testimonials.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.clients_list.enable }}
+      {{ partial "clients.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.news.enable }}
+      {{ partial "news.html" . }}
+    {{ end }}
+ 
+    {{ if .Site.Params.subscribe.enable }}
+      {{ partial "subscribe.html" . }}
+    {{ end }}
+
+    {{ if .Site.Params.footer.enable }}
+      {{ partial "footer.html" . }}
+    {{ end }}
+
+    {{ partial "js.html" . }}
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{{ "<!-- Services -->" | safeHTML }}
+<section id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-area">
+                    <h2 class="title">{{ with .Site.Params.services.title }}{{ . }}{{ end }}</h2>
+                    <span class="line"></span>
+                    <p>{{ with .Site.Params.services.subtitle }}{{ . | markdownify }}{{ end }}</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="service-content">
+                    <div class="row">
+                        {{ range .Site.Params.services.cells }}
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single-service wow zoomIn">
+                                <i class="fa {{ .icon }} service-icon"></i>
+                                <h4 class="service-title">{{ .title | markdownify }}</h4>
+                                <p>{{ .description | markdownify }}</p>
+                            </div>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
