@@ -1,0 +1,21 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/spf13/hugoThemes#themetoml for an example
+
+name = "Hugo Intensely Theme"
+license = "MIT"
+licenselink = "//github.com/milo-hyben/hugo-intensely-theme/blob/master/LICENSE.md"
+description = "Free Bootstrap Corporate Business Website Template"
+homepage = "//github.com/milo-hyben/hugo-intensely-theme"
+tags = ["business", "company", "contact form", "bootstrap", "google analytics",]
+features = ["", ""]
+min_version = 0.18
+
+[author]
+  name = "milo-hyben"
+  homepage = "//github.com/milo-hyben"
+
+# If porting an existing theme
+[original]
+  name = "Md. Altaf Hossain"
+  homepage = "//www.markups.io/"
+  repo = "//www.markups.io/items/free-bootstrap-corporate-business-website-template/"
